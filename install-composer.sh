@@ -32,7 +32,9 @@ force=0
 while (($#)); do
     case "$1" in
         --php|--install-dir|--bin-dir)
-            (($# >= 2)) && [[ -n "$2" && "$2" != --* ]] || die "$1 requires a value."
+            if (($# < 2)) || [[ -z "$2" || "$2" == --* ]]; then
+                die "$1 requires a value."
+            fi
             case "$1" in
                 --php) php_choice="$2" ;;
                 --install-dir) install_dir="$2" ;;
