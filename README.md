@@ -18,6 +18,9 @@ Run this script as your **cPanel account user**. It rejects root execution. It d
 Download or upload `install-composer.sh` from this repository to your account, then open cPanel Terminal or connect over SSH:
 
 ```bash
+curl --fail --show-error --location \
+  --output install-composer.sh \
+  https://raw.githubusercontent.com/Nikba-Creative-Studio/cpanel-composer-installer/main/install-composer.sh
 bash install-composer.sh --php 8.3
 export PATH="$HOME/bin:$PATH"
 composer --version
@@ -32,7 +35,7 @@ bash install-composer.sh --php 8.3
 export PATH="$HOME/bin:$PATH"
 ```
 
-For a private repository, cloning requires GitHub access. You can also download the script while signed in and upload it using cPanel File Manager.
+The repository is public; downloading or cloning does not require GitHub authentication. You can also upload the script using cPanel File Manager.
 
 Replace `8.3` with the PHP version used by your project. Find the website's PHP version in **cPanel → MultiPHP Manager** or your host's PHP Selector. The script does not infer a domain's PHP configuration.
 
