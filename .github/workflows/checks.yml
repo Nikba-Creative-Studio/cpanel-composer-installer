@@ -1,0 +1,13 @@
+name: Checks
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax
+        run: bash -n install-composer.sh
+      - name: ShellCheck
+        run: shellcheck install-composer.sh
+      - name: Installer regression tests
+        run: python3 -m unittest discover -s tests -v
